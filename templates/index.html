@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block content %}
+<div align="center">
+  <p class="title is-1" style="font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif; color: #666;">VEHICLE FINDER</p>
+
+  <table width="1000" height="549" border="0" cellpadding="10" cellspacing="10">
+    <tbody class="box">
+      <tr>
+        <td width="465" style="text-align: center">
+          <a href="{% url 'car_list' %}"><img src="{% static 'img/client_photo.png' %}" width="312" height="278" /></a>
+        </td>
+        <td width="465" style="text-align: center">
+          <a href="#"><img src="{% static 'img/dealers_photo.png' %}" width="312" height="278" align="middle" /></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-head has-text-centered">
+    <p class="title is-1"> Send us a message </p>
+  </div>
+
+  <div class="hero-body">
+    <nav class="level">
+      <div class="level-item has-text-centered">
+        <form method="POST">
+          {% csrf_token %}
+          <table class="table">
+            {{ contact_form.as_table }}
+          </table>
+          <button type="submit" class="button is-info">Submit</button>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+  <div class="hero-foot">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d380510.68412994454!2d-88.01284404835026!3d41.833902495034614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C+IL%2C+USA!5e0!3m2!1sen!2sin!4v1531650226524" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </div>
+</section>
+{% endblock %}

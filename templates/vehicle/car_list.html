@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+
+{%  if user.userprofile.type == 'dealer' %}
+  <section class="section">
+    <a class="button is-link" href="{% url 'car_create' %}">Create Car</a>
+  </section>
+{%  endif %}
+
+<section class="section">
+  <input class="input is-rounded" type="text" id="myInput" placeholder="Search here by Vehicle_ID" onkeyup="myFunction()" width="25%">
+
+  <table id="myTable"  class="table is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>Vehicle ID</th>
+        <th>Image</th>
+        <th>Make</th>
+        <th>Short Model</th>
+        <th>Trim</th>
+        <th>Long Model</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for car in cars %}
+        <tr>
+          <td>  <a href="{% url 'car_details' car.id %}">{{ car.vehicleId }}</a> </td>
+          <td>  <img src="{{ car.model_pic.url }}" width="50px"  height="50px" /></td>
+          <td>{{ car.make }}</td>
+          <td>{{ car.shortModel }}</td>
+          <td>{{ car.trim }}</td>
+          <td>{{ car.longModel }}</td>
+          <td> <a class="button is-info" href="{% url 'car_details' car.id %}"> View Details</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% if cars.has_other_pages %}
+    <ul class="pagination-list">
+      {% if cars.has_previous %}
+        <li class="pagination-link"> <a href="?page=1">First page</a> </li>
+        <li class="pagination-link"><a href="?page={{ cars.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="pagination-link disabled"><span>&laquo;</span></li>
+      {% endif %}
+
+      {% for i in cars.paginator.page_range %}
+        {% if cars.number == i %}
+          <li class="pagination-link is-current">{{ i }}</li>
+        {% elif forloop.counter < 5 %}
+          <li class="pagination-link"><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+
+      {% if cars.has_next %}
+        <li class="pagination-link"><a href="?page={{ cars.next_page_number }}">&raquo;</a></li>
+        <li class="pagination-link"> <a href="?page={{ cars.paginator.num_pages }}">Last page</a> </li>
+      {% else %}
+        <li class="pagination-link disabled"><span>&raquo;</span></li>
+      {% endif %}
+    </ul>
+  {% endif %}
+</section>
+{% endblock %}

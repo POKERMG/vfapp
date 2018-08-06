@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-head has-text-centered title">
+    {{ car.make }} {{ car.longModel }}
+  </div>
+
+	<div class="hero-body">
+    <nav class="level">
+      <div class="level-item has-text-centered">
+          <img  width="500px" height="500" src="{{  car.model_pic.url }}" />
+        </figure>
+      </div>
+    </nav>
+	</div>
+
+  <div class="hero-foot">
+  	<table class="table is-striped is-hoverable is-fullwidth">
+  		<tr>
+  			<td> Derivative </td>
+  			<td> {{ car.derivative }} </td>
+  		</tr>
+  		<tr>
+  			<td> Vehicle ID </td>
+  			<td> {{ car.vehicleId }} </td>
+  		</tr>
+  		<tr>
+  			<td> Short Model </td>
+  			<td>{{ car.shortModel }}  </td>
+  		</tr>
+  		<tr>
+  			<td> Long Model </td>
+  			<td> {{ car.longModel }} </td>
+  		</tr>
+  		<tr>
+  			<td> Trim </td>
+  			<td> {{ car.trim }} </td>
+  		</tr>
+  		<tr>
+  			<td> Year introduced </td>
+  			<td> {{ car.yearIntroduced }} </td>
+  		</tr>
+  		<tr>
+  			<td> Year discontinued </td>
+  			<td> {{ car.yearDiscontinued }} </td>
+  		</tr>
+  		<tr>
+  			<td> Currently Available</td>
+  			<td> {{ car.currentlyAvailable }} </td>
+  		</tr>
+  	</table>
+  </div>
+</section>
+{% endblock %}

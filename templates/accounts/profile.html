@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head %}
+    <title>Profile</title>
+{% endblock %}
+{% block body %}
+
+<nav class="level">
+  <div class="level-item has-text-centered">
+    <table class="table">
+      <tr>
+        <th>First Name:</th>
+        <td>{{ user.first_name }}</td>
+      </tr>
+      <tr>
+        <th>Last Name:</th>
+        <td>{{ user.last_name }}</td>
+      </tr>
+      <tr>
+        <th>Username:</th>
+        <td>{{ user.username }}</td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td>{{ user.email }}</td>
+      </tr>
+      <tr>
+        <th>Phone:</th>
+        <td>{{ user.userprofile.phone }}</td>
+      </tr>
+      <tr>
+        <th>City:</th>
+        <td>{{ user.userprofile.city }}</td>
+      </tr>
+      <tr>
+        <th>website:</th>
+        <td>{{ user.userprofile.website }}</td>
+      </tr>
+      <tr>
+        <th>Image:</th>
+        <td>
+          <figure class="image is-128x128">
+            <img src="{{MEDIA_URL}}{{ user.userprofile.sample_image.url }}" height="222" width="222">
+        </figure>
+        </td>
+      </tr>
+    </table>
+  </div>
+</nav>
+{% endblock %}

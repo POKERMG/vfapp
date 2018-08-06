@@ -1,0 +1,14 @@
+{%  extends "base.html" %}
+{%  block content %}
+<nav class="level">
+  <div class="level-item has-text-centered">
+    <form method="post">
+      {%  csrf_token %}
+      <table class=table>
+          {{ form.as_table }}
+      </table>
+      <button type="submit" class="button is-info">Create Car</button>
+    </form>
+  </div>
+</nav>
+{% endblock %}

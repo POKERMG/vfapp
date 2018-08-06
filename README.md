@@ -1,4 +1,4 @@
-# vfapp# Dedicated Web App using Django/Python and Sqlite 
+# Dedicated Web App using Django/Python and Sqlite 
 
 ## Django 2.07 | Python 3.6 | Sqlite
 
